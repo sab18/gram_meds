@@ -13,3 +13,29 @@ RestartSec=10
 
 [Install]
 WantedBy=multi-user.target
+
+
+
+ar 24 19:45:37 raspberrypi python3[30198]:         'Please set pin numbering mode using GPIO.setmode(GPIO.BOARD) or '
+Mar 24 19:45:37 raspberrypi python3[30198]:         'GPIO.setmode(GPIO.BCM)')
+Mar 24 19:45:37 raspberrypi python3[30198]: RuntimeError: Please set pin numbering mode using GPIO.setmode(GPIO.BOARD) or GPIO.setmode(GPIO.BCM)
+Mar 24 19:45:37 raspberrypi systemd[1]: button_notify.service: Main process exited, code=exited, status=1/FAILURE
+Mar 24 19:45:37 raspberrypi systemd[1]: button_notify.service: Failed with result 'exit-code'.
+Mar 24 19:45:47 raspberrypi systemd[1]: button_notify.service: Scheduled restart job, restart counter is at 5.
+Mar 24 19:45:47 raspberrypi systemd[1]: Started button_notify.service - Button Email Notifier.
+Mar 24 19:45:48 raspberrypi python3[30203]: Traceback (most recent call last):
+Mar 24 19:45:48 raspberrypi python3[30203]:   File "/usr/lib/python3/dist-packages/RPi/GPIO/__init__.py", line 393, in _gpio_list
+Mar 24 19:45:48 raspberrypi python3[30203]:     return tuple(_to_gpio(int(channel)) for channel in chanlist)
+Mar 24 19:45:48 raspberrypi python3[30203]:                                                        ^^^^^^^^
+Mar 24 19:45:48 raspberrypi python3[30203]: TypeError: 'int' object is not iterable
+Mar 24 19:45:48 raspberrypi python3[30203]: During handling of the above exception, another exception occurred:
+Mar 24 19:45:48 raspberrypi python3[30203]: Traceback (most recent call last):
+Mar 24 19:45:48 raspberrypi python3[30203]:   File "/home/pi/button_notify.py", line 19, in <module>
+Mar 24 19:45:48 raspberrypi python3[30203]:     GPIO.setup(BUTTON_PIN, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+Mar 24 19:45:48 raspberrypi python3[30203]:     ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Mar 24 19:45:48 raspberrypi python3[30203]:   File "/usr/lib/python3/dist-packages/RPi/GPIO/__init__.py", line 680, in setup
+Mar 24 19:45:48 raspberrypi python3[30203]:     for gpio in _gpio_list(chanlist):
+Mar 24 19:45:48 raspberrypi python3[30203]:                 ~~~~~~~~~~^^^^^^^^^^
+Mar 24 19:45:48 raspberrypi python3[30203]:   File "/usr/lib/python3/dist-packages/RPi/GPIO/__init__.py", line 396, in _gpio_list
+Mar 24 19:45:48 raspberrypi python3[30203]:     return (_to_gpio(int(chanlist)),)
+Mar 24 19:45:48 raspberrypi python3[30203]:             ~~~~~~~~^^^^^^^^^^^^^^^
