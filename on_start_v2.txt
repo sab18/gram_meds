@@ -1,0 +1,21 @@
+sudo nano /etc/systemd/system/button_notify.service
+```
+
+Replace everything in it with this updated version:
+```
+[Unit]
+Description=Button Email Notifier
+After=network-online.target multi-user.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/home/pi
+ExecStartPre=/bin/sleep 10
+ExecStart=/usr/bin/python3 /home/pi/button_notify.py
+Restart=on-failure
+RestartSec=15
+
+[Install]
+WantedBy=multi-user.target
